@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Dashboard | Tibet Corner Admin</title>
+  <meta name="theme-color" content="#481114">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Allura&family=Inter:wght@400;500;600&family=Libre+Caslon+Text:wght@400;700&family=Marcellus&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/admin.css">
+</head>
+<body>
+<div class="app">
+  <!-- ============ SIDEBAR ============ -->
+  <aside class="sidebar" id="sidebar">
+    <a class="side-logo" href="index.html" target="_blank" rel="noopener" aria-label="Open Tibet Corner website">
+      <svg viewBox="0 0 150 34" aria-hidden="true"><path d="M2 33 L38 12 L50 19 L72 2 L96 20 L108 13 L148 33 L120 25 L108 18 L98 25 L72 9 L52 25 L38 18 Z" fill="currentColor"/><path d="M66 7 L72 2 L78 7 L74 6 L72 8 L70 6Z" fill="#fff"/></svg>
+      <span class="n">Tibet Corner</span>
+      <span class="s">OOTY</span>
+    </a>
+    <nav class="side-nav" aria-label="Admin">
+      <a href="#dashboard" data-view="dashboard"><svg><use href="#i-home"/></svg>Dashboard</a>
+      <a href="#menu" data-view="menu"><svg><use href="#i-fork"/></svg>Menu Management</a>
+      <a href="#gallery" data-view="gallery"><svg><use href="#i-image"/></svg>Gallery</a>
+      <a href="#offers" data-view="offers"><svg><use href="#i-gift"/></svg>Events &amp; Offers</a>
+      <a href="#bookings" data-view="bookings"><svg><use href="#i-cal"/></svg>Bookings</a>
+      <a href="#enquiries" data-view="enquiries"><svg><use href="#i-mail"/></svg>Contact Enquiries</a>
+      <a href="#settings" data-view="settings"><svg><use href="#i-gear"/></svg>Settings</a>
+      <a href="#website" data-view="website"><svg><use href="#i-globe"/></svg>Website Settings</a>
+      <a href="index.html" id="logout"><svg><use href="#i-logout"/></svg>Logout</a>
+    </nav>
+    <p class="side-script">Taste the<br><span>Himalayan Vibes</span></p>
+  </aside>
+  <div class="side-backdrop" id="sideBackdrop"></div>
+
+  <!-- ============ MAIN ============ -->
+  <div class="main">
+    <header class="topbar">
+      <button class="burger" id="burger" aria-label="Toggle sidebar" aria-controls="sidebar" aria-expanded="false"><span></span><span></span><span></span></button>
+      <h1 id="pageTitle">Dashboard</h1>
+      <div class="top-right">
+        <a class="live-pill" id="livePill" href="index.html" target="_blank" rel="noopener"><i></i><span>Website Live</span><svg><use href="#i-ext"/></svg></a>
+        <div class="admin-user">
+          <img src="assets/img/admin-avatar.webp" alt="" width="40" height="40">
+          <span>Admin</span>
+          <svg class="chev" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </div>
+      </div>
+    </header>
+
+    <main id="view" class="view" tabindex="-1"></main>
+  </div>
+</div>
+
+<!-- ============ GENERIC FORM MODAL ============ -->
+<div class="modal" id="modal" hidden role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modal-backdrop" data-close></div>
+  <form class="modal-box" id="modalForm" novalidate>
+    <button type="button" class="modal-close" data-close aria-label="Close">&times;</button>
+    <h2 id="modalTitle"></h2>
+    <div id="modalBody"></div>
+    <div class="modal-actions">
+      <button type="button" class="btn ghost" data-close>Cancel</button>
+      <button type="submit" class="btn">Save</button>
+    </div>
+  </form>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<!-- ============ ICONS ============ -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-home" viewBox="0 0 24 24"><path d="M3 11 12 3l9 8v10h-6v-6H9v6H3z" fill="currentColor"/></symbol>
+    <symbol id="i-fork" viewBox="0 0 24 24"><path d="M6 2v8a3 3 0 0 0 2 2.8V22h2v-9.2A3 3 0 0 0 12 10V2h-1.5v7h-1V2H8v7H7V2zm11 0c-2 0-3.5 2.5-3.5 6v5H16v9h2V2z" fill="currentColor"/></symbol>
+    <symbol id="i-image" viewBox="0 0 24 24"><path d="M4 4h16a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1zm1 13h14l-4.5-6-3.5 4.5-2.5-3zM8 10.5A1.5 1.5 0 1 0 8 7.5a1.5 1.5 0 0 0 0 3z" fill="currentColor"/></symbol>
+    <symbol id="i-gift" viewBox="0 0 24 24"><path d="M20 8h-2.2A3 3 0 0 0 12 4.8 3 3 0 0 0 6.2 8H4a1 1 0 0 0-1 1v3h8V8h2v4h8V9a1 1 0 0 0-1-1zM9 8a1 1 0 1 1 1-1v1zm5 0V7a1 1 0 1 1 1 1zM4 14v6a1 1 0 0 0 1 1h6v-7zm9 7h6a1 1 0 0 0 1-1v-6h-7z" fill="currentColor"/></symbol>
+    <symbol id="i-cal" viewBox="0 0 24 24"><path d="M7 2v2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-2V2h-2v2H9V2zM5 9h14v11H5zm2 2v2h2v-2zm4 0v2h2v-2zm4 0v2h2v-2zm-8 4v2h2v-2zm4 0v2h2v-2zm4 0v2h2v-2z" fill="currentColor"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><path d="M3 5h18a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1zm1 2.4V17h16V7.4l-8 5.3z M5 7l7 4.6L19 7z" fill="currentColor" fill-rule="evenodd"/></symbol>
+    <symbol id="i-gear" viewBox="0 0 24 24"><path d="M19.4 13a7.5 7.5 0 0 0 0-2l2.1-1.6-2-3.5-2.5 1a7.4 7.4 0 0 0-1.7-1L15 3h-4l-.4 2.7a7.4 7.4 0 0 0-1.7 1l-2.5-1-2 3.5L6.6 11a7.5 7.5 0 0 0 0 2l-2.1 1.6 2 3.5 2.5-1c.5.4 1.1.8 1.7 1L11 21h4l.4-2.7c.6-.3 1.2-.6 1.7-1l2.5 1 2-3.5zM13 15.5a3.5 3.5 0 1 1 0-7 3.5 3.5 0 0 1 0 7z" fill="currentColor"/></symbol>
+    <symbol id="i-globe" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3z"/></g></symbol>
+    <symbol id="i-logout" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 4H5v16h5M14 8l4 4-4 4M18 12H9"/></g></symbol>
+    <symbol id="i-ext" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></g></symbol>
+    <symbol id="i-chart" viewBox="0 0 24 24"><path d="M4 20h17v-2H4zM5 17h3V9H5zm5 0h3V4h-3zm5 0h3v-6h-3z" fill="currentColor"/></symbol>
+    <symbol id="i-bolt" viewBox="0 0 24 24"><path d="M13 2 4 14h7l-1 8 9-12h-7z" fill="currentColor"/></symbol>
+    <symbol id="i-history" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3.5 12a8.5 8.5 0 1 0 2.5-6L3.5 8.5M3.5 4v4.5H8M12 7.5V12l3 2"/></g></symbol>
+    <symbol id="i-layers" viewBox="0 0 24 24"><path d="M12 2 2 7l10 5 10-5zm-7.6 8.7L2 12l10 5 10-5-2.4-1.3L12 14.5zm0 5L2 17l10 5 10-5-2.4-1.3L12 19.5z" fill="currentColor"/></symbol>
+    <symbol id="i-eye" viewBox="0 0 24 24"><path d="M12 5C6.5 5 2.7 9.4 1.5 12c1.2 2.6 5 7 10.5 7s9.3-4.4 10.5-7C21.3 9.4 17.5 5 12 5zm0 11a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm0-2a2 2 0 1 0 0-4 2 2 0 0 0 0 4z" fill="currentColor"/></symbol>
+    <symbol id="i-pen" viewBox="0 0 24 24"><path d="M3 17.3V21h3.7L17.8 9.9l-3.7-3.7zM20.7 7c.4-.4.4-1 0-1.4l-2.3-2.3a1 1 0 0 0-1.4 0l-1.8 1.8 3.7 3.7z" fill="currentColor"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-up" viewBox="0 0 24 24"><path d="M12 19V5M6 11l6-6 6 6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-trash" viewBox="0 0 24 24"><path d="M9 3h6l1 2h4v2H4V5h4zM6 8h12l-1 13H7z" fill="currentColor"/></symbol>
+  </defs>
+</svg>
+
+<script src="assets/js/store.js"></script>
+<script src="assets/js/admin.js"></script>
+</body>
+</html>
