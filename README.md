@@ -19,9 +19,9 @@ Upload the whole folder to any static host (Netlify, Vercel, GitHub Pages, cPane
 
 ## Important: data storage
 Menu edits, photos, bookings and enquiries are saved in the **browser's localStorage**
-(`assets/js/store.js`). That means bookings made on a customer's phone will NOT reach the
+(`assets/js/data-store.js`). That means bookings made on a customer's phone will NOT reach the
 owner's admin page, and the admin page has no password. Before going live, replace the
-functions in `store.js` with a real backend (e.g. Supabase or Firebase) and add a login.
+functions in `data-store.js` with a real backend (e.g. Supabase or Firebase) and add a login.
 
 ## Images
 `assets/img/` was cut from the mockups by `work/extract.py` (text removed with inpainting).
